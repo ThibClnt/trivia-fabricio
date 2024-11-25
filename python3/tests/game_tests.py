@@ -1,14 +1,10 @@
-import io
-import sys
 import random
 
 from python3.trivia import Game
 
 
-def test_golden_master():
+def test_golden_master(capsys):
     random.seed(42)
-    output_capture = io.StringIO()
-    sys.stdout = output_capture
 
     game = Game()
 
@@ -27,8 +23,7 @@ def test_golden_master():
         if not not_a_winner:
             break
 
-    output = output_capture.getvalue()
-    sys.stdout = sys.__stdout__
+    output = capsys.readouterr().out
 
     with open("golden_master_output.txt", "r") as file:
         expected_output = file.read()
