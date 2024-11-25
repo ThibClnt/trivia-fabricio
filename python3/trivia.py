@@ -143,7 +143,7 @@ class Game:
         return not (self.purses[self.current_player] == 6)
 
 
-from random import randrange
+from random import randrange, random, seed
 
 if __name__ == '__main__':
     not_a_winner = False
@@ -162,4 +162,5 @@ if __name__ == '__main__':
         else:
             not_a_winner = game.was_correctly_answered()
 
-        if not not_a_winner: break
+        if not not_a_winner:
+            break
